@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int nums[10];
+    cout<<"Enter Index: ";
+    for(int i=0;i<10;i++)
+    {
+        cin>>nums[i];
+    }
+    int n = sizeof(nums) / sizeof(nums[0]); // Get size of array
+    int target;
+    cout<<"Enter Target: ";
+    cin>>target;
+    int left = 0;
+    int right = n - 1;
+    int mid;
+
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+
+        if (nums[mid] == target) {
+            cout << "Target found at index " << mid << endl;
+            return 0;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    cout << "Target not found" << endl;
+    return 0;
+}
